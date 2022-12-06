@@ -17,8 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home Screen'),
         backgroundColor: Colors.blueGrey[900],
       ),
-      body: const Center(
-        child: Text('Title'),
+      body: Center(
+        child: FutureBuilder(
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return const Text('Home Screen');
+        }),
       ),
     );
   }
