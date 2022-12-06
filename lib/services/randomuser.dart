@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:randomuser_project/models/User.dart';
 
 final String baseUrl = "https://randomuser.me/api/";
 
-Future getData() async {
+Future<User> getData() async {
   String firstName = 'NoName';
   // Define the URL
   Uri url = Uri.parse(baseUrl);
@@ -15,10 +16,7 @@ Future getData() async {
   // If the call to the server was successful, parse the JSON
   Map data = json.decode(response.body);
   // print(data);
+  User user = User.fromJson(data['results'][0]);
 
-  // // Get user name from JSON
-  if (response.statusCode == 200) {
-    firstName = data['results'][0]['name']['first'];
-  }
-  return firstName;
+  return user;
 }
