@@ -10,6 +10,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Future getData() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 'Data';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: FutureBuilder(
+            initialData: 'Initial Data',
+            future: getData(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return const Text('Home Screen');
-        }),
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return const Text('Error');
+              } else if (snapshot.hasData) {
+                return Text(snapshot.data);
+              }
+              return const Text('Home Screen');
+            }),
       ),
     );
   }
