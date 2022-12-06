@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:randomuser_project/screens/homeScreen.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Title'),
-          backgroundColor: Colors.blueGrey[900],
-        ),
-        body: Center(
-          child: Text('Title'),
-        ),
-      ),
-    ),
-  );
+  runApp(MaterialApp(
+    home: HomeScreen(),
+  ));
 }
