@@ -11,7 +11,7 @@ class UserWidget extends StatelessWidget {
         child: Column(
       children: [
         const Text('User Widget'),
-        Text(user.imageUrl),
+    Image.network(user.imageUrl),
         Text(user.firstName),
         Text(user.lastName),
         Text(user.email),
